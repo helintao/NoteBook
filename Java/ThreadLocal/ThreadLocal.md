@@ -1,5 +1,5 @@
 ## ThreadLocal  
-ThreadLocal为变量在每个线程中都创建了一个*副本*，每个线程可以访问自己内部的*副本变量*。  
+ThreadLocal类似于线程中存储数据的局部变量。
 
 ## ThreadLocal类  
 
