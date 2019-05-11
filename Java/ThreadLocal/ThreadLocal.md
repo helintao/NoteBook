@@ -1,5 +1,5 @@
 ## ThreadLocal  
-ThreadLocal类似于线程中存储数据的局部变量。
+ThreadLocal类似于是线程中存储数据的局部变量。
 
 ## ThreadLocal类  
 
