@@ -1,6 +1,6 @@
 # AsyncTask 
 
-AsyncTask 是一个抽象类。
+AsyncTask 是一个抽象类。AsyncTask内部原理是Thread+Handler
 
 三个参数(泛型参数)
 ```java
@@ -62,7 +62,7 @@ class Download extends AsyncTask<Void,Integer,Boolean>{
         onPreExecute();
 
         mWorker.mParams = params;
-        exec.execute(mFuture);//mFuture是一个并发类
+        exec.execute(mFuture);//mFuture是一个异步处理获取执行结果类的实例
 
         return this;
     }
@@ -299,13 +299,62 @@ class Download extends AsyncTask<Void,Integer,Boolean>{
         callable = null;        // to reduce footprint
     }
   ```
-  分析从FutureTask代码中就可发现，FutureTask的run方法会调用mWorker的call方法，在mWorker的call方法执行完毕后，会调用set(result)方法。set(result)中调用了finishCompletion()，最后finishCompletion()中done方法。done内部就是postResult了。
+  分析从FutureTask代码中就可发现，FutureTask的run方法会调用mWorker的call方法，在mWorker的call方法执行完毕后，会调用set(result)方法。set(result)中调用了finishCompletion()，最后finishCompletion()中done方法。done内部就是返回结果之类的操作了。
 
-  总结： 
-  - 实例化AsyncTask，在实例化的时候，获得到了Handler，创建了FutureTask对象和WorkerRunnable对象，其中在WorkerRunnable对象中的实现的call方法里，调用了doInBackground()方法，并在doInBackground()方法完成后通过postResult()方法将结果通过Handler发送给了主线程（或其他调用asyncTask的线程）。在FutureTask对象中传入WorkerRunnable对象，最终在内部调用WorkerRunnable对象中的call方法。
-  - 当我们调用execute方法的时候，内部会调用executeOnExecutor方法，并传入Params。在executeOnExecutor中会对AsyncTask的状态进行判断，如果正在运行或者结束则抛出异常。反之，改变状态为运行态，调用onPreExecute方法，将Params封装到mWorker中，最后SerialExecutor的实例调用execute(mFuture)方法，并传入mFuture。  
+- onProgressUpdate(Params...)
+
+  在doInBackground()方法调用 publishProgress(params)方法
+  ```java
+  protected final void publishProgress(Progress... values) {
+      if (!isCancelled()) {
+          getHandler().obtainMessage(MESSAGE_POST_PROGRESS,
+                  new AsyncTaskResult<Progress>(this, values)).sendToTarget();
+      }
+  }
+  
+  private static class InternalHandler extends Handler {
+      public InternalHandler(Looper looper) {
+          super(looper);
+      }
+  
+      @SuppressWarnings({"unchecked", "RawUseOfParameterizedType"})
+      @Override
+      public void handleMessage(Message msg) {
+          AsyncTaskResult<?> result = (AsyncTaskResult<?>) msg.obj;
+          switch (msg.what) {
+              case MESSAGE_POST_RESULT:
+                  // There is only one result
+                  result.mTask.finish(result.mData[0]);
+                  break;
+              case MESSAGE_POST_PROGRESS:
+                  result.mTask.onProgressUpdate(result.mData);//调用onProgressUpdate方法。
+                  break;
+          }
+      }
+  }
+  ```
+  分析：通过上面的源码可以发现，当我们调用了publishProgress(params)方法时，内部会通过Handler机制发送一个MESSAGE_POST_PROGRESS消息，然后就切换到了主线程执行onProgressUpdate(Params...)方法。
+
+  - onPostExecute(Result)
+  ```java
+    private void finish(Result result) {
+        if (isCancelled()) {
+            onCancelled(result);
+        } else {
+            onPostExecute(result);
+        }
+        mStatus = Status.FINISHED;
+    }
+  ```
+  分析：综合上面的代码分析，当任务完成时，内部会通过Handler机制发送一个MESSAGE_POST_RESULT消息，然后就切换到了主线程执行调用finish(result.mData[0])方法，在finish(result)中执行onPostExecute(Result)方法。并设置状态为完成态。
+
+
+
+总结： 
+  - 实例化AsyncTask，在实例化的时候，获得到了Handler，创建了FutureTask对象和WorkerRunnable对象，其中在WorkerRunnable对象中的实现的call方法里，调用了doInBackground()方法，并在doInBackground()方法完成后通过postResult()方法将结果通过Handler发送给了主线程。在FutureTask对象中传入WorkerRunnable对象，最终在内部调用WorkerRunnable对象中的call方法。
+  - 当我们调用execute方法的时候，内部会调用executeOnExecutor方法，并传入Params。在executeOnExecutor中会对AsyncTask的状态进行判断，如果正在运行或者结束则抛出异常。反之，改变状态为运行态，调用onPreExecute方法，将Params传入到mWorker中，最后SerialExecutor的实例调用execute(mFuture)方法，并传入mFuture。  
   - 在execute(final Runnable r)中,将传进来的mFuture插入到任务队列中，如果这个时候没有正在执行的AsyncTask任务，就会调用scheduleNext()方法来执行下一个AsyncTask任务。当一个AsyncTask任务执行完成后，AsyncTask会继续执行其他任务。  
-  执行任务的语句：THREAD_POOL_EXECUTOR.execute(mActive);将任务交给线程池去处理。这就是整个流程。  
+  执行任务的语句：THREAD_POOL_EXECUTOR.execute(mActive);将任务交给线程池去处理。处理结果通过Handler机制发送给主线程。这就是整个流程。  
 
 
 
