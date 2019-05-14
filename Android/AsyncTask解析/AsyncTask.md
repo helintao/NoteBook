@@ -299,7 +299,7 @@ class Download extends AsyncTask<Void,Integer,Boolean>{
         callable = null;        // to reduce footprint
     }
   ```
-  分析从FutureTask代码中就可发现，FutureTask的run方法会调用mWorker的call方法，在mWorker的call方法执行完毕后，会调用set(result)方法。set(result)中调用了finishCompletion()，最后finishCompletion()中done方法。done内部就是返回结果之类的操作了。
+  分析从FutureTask代码中就可发现，FutureTask的run方法会调用mWorker的call方法，在mWorker的call方法执行完毕后，会调用set(result)方法。set(result)中调用了finishCompletion()，最后finishCompletion()中调用了done方法。done内部就是返回结果之类的操作了。
 
 - onProgressUpdate(Params...)
 
@@ -335,7 +335,7 @@ class Download extends AsyncTask<Void,Integer,Boolean>{
   ```
   分析：通过上面的源码可以发现，当我们调用了publishProgress(params)方法时，内部会通过Handler机制发送一个MESSAGE_POST_PROGRESS消息，然后就切换到了主线程执行onProgressUpdate(Params...)方法。
 
-  - onPostExecute(Result)
+- onPostExecute(Result)
   ```java
     private void finish(Result result) {
         if (isCancelled()) {
@@ -351,10 +351,9 @@ class Download extends AsyncTask<Void,Integer,Boolean>{
 
 
 总结： 
-  - 实例化AsyncTask，在实例化的时候，获得到了Handler，创建了FutureTask对象和WorkerRunnable对象，其中在WorkerRunnable对象中的实现的call方法里，调用了doInBackground()方法，并在doInBackground()方法完成后通过postResult()方法将结果通过Handler发送给了主线程。在FutureTask对象中传入WorkerRunnable对象，最终在内部调用WorkerRunnable对象中的call方法。
-  - 当我们调用execute方法的时候，内部会调用executeOnExecutor方法，并传入Params。在executeOnExecutor中会对AsyncTask的状态进行判断，如果正在运行或者结束则抛出异常。反之，改变状态为运行态，调用onPreExecute方法，将Params传入到mWorker中，最后SerialExecutor的实例调用execute(mFuture)方法，并传入mFuture。  
-  - 在execute(final Runnable r)中,将传进来的mFuture插入到任务队列中，如果这个时候没有正在执行的AsyncTask任务，就会调用scheduleNext()方法来执行下一个AsyncTask任务。当一个AsyncTask任务执行完成后，AsyncTask会继续执行其他任务。  
-  执行任务的语句：THREAD_POOL_EXECUTOR.execute(mActive);将任务交给线程池去处理。处理结果通过Handler机制发送给主线程。这就是整个流程。  
+
+  用户通过调用exeute()方法开始执行异步任务，在内部，executeOnExecutor()方法中调用了onPreExecute()，用户可以重写此方法进行一些初始化的操作。接着就会将任务交给线程池去处理，在处理耗时任务的过程中，通过调用publishProgress(params)方法，内部就会通过Handler机制发送一个MESSAGE_POST_PROGRESS消息，然后就切换到主线程里去执行onProgressUpdate(Params...)方法，进行一些例如进度条更新的操作。当任务完成的时候，处理后的结果会得到返回。最后通过Handler机制将结果返回给主线程。
+
 
 
 
