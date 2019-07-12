@@ -50,7 +50,7 @@ HashMap内部实现的hash()函数，首先对hashCode()的返回值进行处理
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
 ```
-![hash的实现过程](img/hash.jpg)  
+![hash的实现过程](../img/hash.jpg)  
 
 将key.hashCode()的低16位和高16位做异或运算，其目的是为了扰乱低位信息以实现减少碰撞重提。
 
@@ -61,7 +61,7 @@ HashMap内部实现的hash()函数，首先对hashCode()的返回值进行处理
   
   HashMap的buckets数组其实就是一个*链表数组*。
   
-  ![buckets](img/buckets.png)
+  ![buckets](../img/buckets.png)
 
 - 阈值  
   
