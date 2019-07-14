@@ -32,7 +32,7 @@ JVM的操作数通过操作数栈来访问，而因为指令中没有使用任�
 
 在Java程序中，Java类会被编译成一个或多个class文件，然后打包到jar文件中，接着Java虚拟机会从相应的class文件和jar文件中获取对应的字节码；Android应用虽然也使用Java语言，但是在编译成class文件后，**还会通过DEX工具将所有的class文件转换成一个dex文件，Dalvik虚拟机再从中读取指令和数据。**
 
-![dex](img/dex.png)
+![dex](../img/dex.png)
 
 优势：
 
@@ -42,7 +42,7 @@ class文件去冗余：class文件存在很多的冗余信息，dex工具会去�
 
 方法数受限：多个class文件变成一个dex文件所带来的问题就是方法数超过**65535**时报错，由此引出MultiDex技术。
 
-![dexAndClass](img/dexAndclass.png)
+![dexAndClass](../img/dexAndclass.png)
 
 最终生成了一个.odex文件，odex是为了在运行过程中进一步提高性能，对dex文件的进一步优化，优化后的文件大小会有所增加，应该是原DEX文件的1-4倍。
 

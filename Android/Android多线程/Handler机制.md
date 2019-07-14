@@ -27,7 +27,7 @@ void checkThread(){
 ```
 
 Handler的工作过程  
-![工作过程](img/clipboard.png)
+![工作过程](../img/clipboard.png)
 
 ## **Android的消息机制分析**
 - ThreadLocal的工作原理  
@@ -109,7 +109,7 @@ Handler的工作过程
 
     - 最后调用Handler的HandlerMessage方法来处理消息。
 
-    ![Handler消息处理过程](img/handlerInfo.png)
+    ![Handler消息处理过程](../img/handlerInfo.png)
 
 ## **主线程的消息机制**  
 
