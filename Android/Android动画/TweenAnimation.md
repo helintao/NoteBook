@@ -1,4 +1,4 @@
-# TweenAnimation（补间动画）
+# TweenAnimation（补间动画/View动画）
 Tween Animation即补间动画，主要分为四种，分别是平移、缩放、旋转、透明度
 
 ## 语法
@@ -52,7 +52,7 @@ Tween Animation即补间动画，主要分为四种，分别是平移、缩放�
 </set>
 ```
 
-*set 是一个动画集合，内部可以是多个动画的组合，也可以嵌套set，这里包含了动画实现的所有性在上面的语法中我们需要注意的是平移的时候其实位置接受百分比数值:从-100到100的值，以“%”尾，示百 分比相对于自身;从-100到100的值，以“%p”结尾，表示百分比相对于父容器。例如平移开始位置自身中间则是50%,如平移开始位置在父容器的则是50%p.*
+*set是一个动画集合，内部可以是多个动画的组合，也可以嵌套set，这里包含了动画实现的所有性,在上面的语法中我们需要注意的是平移的时候其实位置接受百分比数值:从-100到100的值，以“%”尾，表示百分比相对于自身;从-100到100的值，以“%p”结尾，表示百分比相对于父容器。例如平移开始位置自身中间则是50%,如平移开始位置在父容器的则是50%p.*
 
 *例如有些人给我们的Activity会加一些从左边进右边出的动画，那么当我们打开ActivityActivity布局的fromXDelta值-100%p并将toXDelta为0%p,那么我们看到的效果就是从左边进入了。*
 
@@ -90,4 +90,22 @@ Tween Animation即补间动画，主要分为四种，分别是平移、缩放�
 Animation animation= AnimationUtils.loadAnimation(context, R.anim.tween_animation);
 imageView.startAnimation(animation);
 ```
+
+# 进阶
+
+View动画的四种变换效果对应着Animation的四个子类：TranslateAnimation、ScaleAnimation、RotateAnimation和AlphaAnimation。这四种动画既可以通过XML来定义，也可以通过代码来创建，对应View动画来说，建议采用xml来定义动画。这是因为xml格式的动画可读性更好。
+
+## 监听过程
+Animation的setAnimationListener可以添加过程监听
+```java
+    public interface AnimationListener {
+        void onAnimationStart(Animation var1);
+        void onAnimationEnd(Animation var1);
+        void onAnimationRepeat(Animation var1);
+    }
+```
+
+## 自定义动画
+
+自定义动画是一件既简单又复杂的事情，说它简单，是因为派生一种新动画只需继承Animation这个抽象类，然后重写它的initialize和applyTransformation方法，在initialize方法中做一些初始化工作，在applyTransformation中进行相应的矩阵变换即可，很多时候需要采用Camera来简化矩阵变化的过程。说它复杂，在于矩阵变换。
 
