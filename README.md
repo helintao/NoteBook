@@ -86,7 +86,7 @@
 
 - Bitmap
 
-    - [图片内存计算]()
+    - [图片内存计算](https://github.com/helintao/NoteBook/blob/master/Android/Bitmap/%E5%9B%BE%E7%89%87%E5%86%85%E5%AD%98%E8%AE%A1%E7%AE%97.md)
 
     - [Bitmap像素大小](https://github.com/helintao/NoteBook/blob/master/Android/Bitmap/Bitmap%E5%83%8F%E7%B4%A0%E5%A4%A7%E5%B0%8F.md)
 
@@ -94,17 +94,17 @@
 
     - View的绘制过程
 
-        - [LayoutInflater]()
+        - [LayoutInflater](https://github.com/helintao/NoteBook/blob/master/Android/View/View%E7%BB%98%E5%88%B6%E4%BD%93%E7%B3%BB/LayoutInflater.md)
 
-        - [setContentView]()
+        - [setContentView](https://github.com/helintao/NoteBook/blob/master/Android/View/View%E7%BB%98%E5%88%B6%E4%BD%93%E7%B3%BB/setContentView.md)
 
-        - [Measure]()
+        - [Measure](https://github.com/helintao/NoteBook/blob/master/Android/View/View%E7%BB%98%E5%88%B6%E4%BD%93%E7%B3%BB/Measure.md)
 
-        - [Layout]()
+        - [Layout](https://github.com/helintao/NoteBook/blob/master/Android/View/View%E7%BB%98%E5%88%B6%E4%BD%93%E7%B3%BB/Layout.md)
 
-        - [Draw]()
+        - [Draw](https://github.com/helintao/NoteBook/blob/master/Android/View/View%E7%BB%98%E5%88%B6%E4%BD%93%E7%B3%BB/Draw.md)
 
-        - [绘制过程之requestLayout和invalidate详解]()
+        - [绘制过程之requestLayout和invalidate详解](https://github.com/helintao/NoteBook/blob/master/Android/View/View%E7%BB%98%E5%88%B6%E4%BD%93%E7%B3%BB/%E7%BB%98%E5%88%B6%E8%BF%87%E7%A8%8B%E4%B9%8BrequestLayout%E5%92%8Cinvalidate%E8%AF%A6%E8%A7%A3.md)
 
 ## Java
 
