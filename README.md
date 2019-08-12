@@ -106,6 +106,11 @@
 
         - [绘制过程之requestLayout和invalidate详解](https://github.com/helintao/NoteBook/blob/master/Android/View/View%E7%BB%98%E5%88%B6%E4%BD%93%E7%B3%BB/%E7%BB%98%E5%88%B6%E8%BF%87%E7%A8%8B%E4%B9%8BrequestLayout%E5%92%8Cinvalidate%E8%AF%A6%E8%A7%A3.md)
 
+    - View的事件传递
+
+        - [事件分发机制](https://github.com/helintao/NoteBook/blob/master/Android/View/View%20%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E4%BD%93%E7%B3%BB/%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6.md)
+
+
 ## Java
 
 - HashMap
