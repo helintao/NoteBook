@@ -123,6 +123,14 @@
 
 ## Java
 
+- Java泛型、反射、注解
+
+    - [泛型](https://github.com/helintao/NoteBook/blob/master/Java/Java%E6%B3%9B%E5%9E%8B%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E6%B3%A8%E8%A7%A3/Java%E6%B3%9B%E5%9E%8B.md)
+
+    - [反射]()
+
+    - [注解]()
+
 - HashMap
 
     - [HashMap](https://github.com/helintao/NoteBook/blob/master/Java/HashMap/HashMap.md)
@@ -134,6 +142,14 @@
     - [Java创建线程的三种方式](https://github.com/helintao/NoteBook/blob/master/Java/Java%E5%B9%B6%E5%8F%91/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F.md)
 
     - [volatile关键字](https://github.com/helintao/NoteBook/blob/master/Java/Java%E5%B9%B6%E5%8F%91/volatile%E5%85%B3%E9%94%AE%E5%AD%97.md)
+
+    - [synchronized](https://github.com/helintao/NoteBook/blob/master/Java/Java%E5%B9%B6%E5%8F%91/Synchronized.md)
+
+    - [ReentrantLock](https://github.com/helintao/NoteBook/blob/master/Java/Java%E5%B9%B6%E5%8F%91/ReentrantLock.md)
+
+    - [synchronized和ReentrantLock的比较](https://github.com/helintao/NoteBook/blob/master/Java/Java%E5%B9%B6%E5%8F%91/synchronized%E5%92%8CReentrantLock%E7%9A%84%E6%AF%94%E8%BE%83.md)
+
+    - [死锁](https://github.com/helintao/NoteBook/blob/master/Java/Java%E5%B9%B6%E5%8F%91/%E6%AD%BB%E9%94%81.md)
 
 - Java数据类型
 
