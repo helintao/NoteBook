@@ -35,8 +35,8 @@
 
 - Android架构
 
-    - [Android架构图]()
-    - [MVP架构]()
+    - [Android架构图](https://github.com/helintao/NoteBook/blob/master/Android/Android%E6%9E%B6%E6%9E%84/Android%E6%9E%B6%E6%9E%84%E5%9B%BE.md)
+    - [MVP架构](https://github.com/helintao/NoteBook/blob/master/Android/Android%E6%9E%B6%E6%9E%84/MVP%E6%9E%B6%E6%9E%84.md)
 
 - Android控件
 
@@ -85,6 +85,8 @@
     - [Window机制](https://github.com/helintao/NoteBook/blob/master/Android/AndroidWindow/Window%E7%9A%84%E6%9C%BA%E5%88%B6.md)
 
 - Bitmap
+
+    - [Bitmap]()
 
     - [图片内存计算](https://github.com/helintao/NoteBook/blob/master/Android/Bitmap/%E5%9B%BE%E7%89%87%E5%86%85%E5%AD%98%E8%AE%A1%E7%AE%97.md)
 
