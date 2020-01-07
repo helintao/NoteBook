@@ -208,6 +208,13 @@
 
     - [延迟拷贝](https://github.com/helintao/NoteBook/blob/master/Java/Java%E6%8B%B7%E8%B4%9D/%E5%BB%B6%E8%BF%9F%E6%8B%B7%E8%B4%9D.md)
 
+## kotlin
+
+- Kotlin中一些符号和变量的区别
+
+    - [!和？的区别]()
+    
+    - [var、val、countval区别]（）
 
 ## DesignPattern
 
