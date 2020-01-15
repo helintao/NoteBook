@@ -212,9 +212,9 @@
 
 - Kotlin中一些符号和变量的区别
 
-    - [!和？的区别]()
+    - [!和？的区别](https://github.com/helintao/NoteBook/blob/master/Kotlin/kotlin%E4%B8%AD%E4%B8%80%E4%BA%9B%E7%AC%A6%E5%8F%B7%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/var%E3%80%81val%E3%80%81count%20val.md)
     
-    - [var、val、countval区别]（）
+    - [var、val、countval区别]（https://github.com/helintao/NoteBook/blob/master/Kotlin/kotlin%E4%B8%AD%E4%B8%80%E4%BA%9B%E7%AC%A6%E5%8F%B7%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/%EF%BC%81%E5%92%8C%EF%BC%9F%E7%9A%84%E5%8C%BA%E5%88%AB.md）
 
 ## DesignPattern
 
