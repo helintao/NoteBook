@@ -125,7 +125,7 @@
 - ADB命令行
    - [adb基本命令行](https://github.com/helintao/NoteBook/blob/master/Android/ADB%E5%91%BD%E4%BB%A4%E8%A1%8C/adb%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.md)
 
-   - [无线连接](https://github.com/helintao/NoteBook/blob/master/Android/ADB%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%97%A0%E7%BA%BFl%E8%BF%9E%E6%8E%A5.md)
+   - [无线连接](https://github.com/helintao/NoteBook/blob/master/Android/ADB%E5%91%BD%E4%BB%A4%E8%A1%8C/%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5.md)
 
 ## Java
 
@@ -218,7 +218,7 @@
 
     - [!和？的区别](https://github.com/helintao/NoteBook/blob/master/Kotlin/kotlin%E4%B8%AD%E4%B8%80%E4%BA%9B%E7%AC%A6%E5%8F%B7%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/var%E3%80%81val%E3%80%81count%20val.md)
     
-    - [var、val、countval区别]（https://github.com/helintao/NoteBook/blob/master/Kotlin/kotlin%E4%B8%AD%E4%B8%80%E4%BA%9B%E7%AC%A6%E5%8F%B7%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/var%E3%80%81val%E3%80%81count%20val.md）
+    - [var、val、countval区别](https://github.com/helintao/NoteBook/blob/master/Kotlin/kotlin%E4%B8%AD%E4%B8%80%E4%BA%9B%E7%AC%A6%E5%8F%B7%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/var%E3%80%81val%E3%80%81count%20val.md)
 
 ## DesignPattern
 
